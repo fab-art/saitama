@@ -23,6 +23,7 @@ export type User = {
   xp: number
   rank: number // 1–8
   streak: number
+  longestStreak: number
 }
 
 export type Achievement = {
@@ -36,4 +37,5 @@ export type Progression = {
   currentRank: number
   consistencyScore: number // 0–1
   fatigueScore: number // 0–1
+  progressionFactor: number // 0–1, persisted between sessions
 }

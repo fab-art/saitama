@@ -80,6 +80,11 @@ function clampedRatio(actual: number, target: number): number {
   return Math.min(actual / target, 1)
 }
 
+/** Returns a 0–1 completion ratio for a workout against its rank target. */
+export function workoutCompletionRatio(workout: WorkoutExercise, target: WorkoutExercise): number {
+  return overallCompletionRatio(workout, target)
+}
+
 function overallCompletionRatio(workout: WorkoutExercise, target: WorkoutExercise): number {
   return (
     (clampedRatio(workout.pushups, target.pushups) +
