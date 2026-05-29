@@ -11,7 +11,7 @@ type UserState = {
 type UserActions = {
   init(): Promise<void>
   setUser(user: User): void
-  createUser(username: string): Promise<void>
+  createUser(username: string, startingRank?: number): Promise<void>
 }
 
 export type UserStore = UserState & UserActions
@@ -39,13 +39,13 @@ export function createUserStore(deps: Deps) {
       set({ user })
     },
 
-    async createUser(username) {
+    async createUser(username, startingRank = 1) {
       const newUser: User = {
         id: crypto.randomUUID(),
         username,
         level: 1,
         xp: 0,
-        rank: 1,
+        rank: startingRank,
         streak: 0,
         longestStreak: 0,
       }
